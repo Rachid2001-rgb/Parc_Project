@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="BASELINE_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="25.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane  prefHeight="644.0" prefWidth="940.0">
+         <children>
+            <TableView layoutX="10.0" layoutY="24.0" prefHeight="441.0" prefWidth="707.0">
+               <columns>
+                  <TableColumn prefWidth="200.0" text="Repas" />
+                  <TableColumn prefWidth="200.0" text="Desponible" />
+                  <TableColumn prefWidth="200.0" text="Prix" />
+                  <TableColumn prefWidth="107.99993896484375" text="coché" />
+               </columns>
+            </TableView>
+            <Button layoutX="100.0" layoutY="502.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="170.0" style="-fx-background-color: GOLD; -fx-border-color: black;" text="Valider">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="432.0" layoutY="501.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="170.0" style="-fx-background-color: WHITE; -fx-border-color: black;" text="Quitter">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>

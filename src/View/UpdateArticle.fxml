@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GestionArticleController">
+   <children>
+      <AnchorPane prefHeight="525.0" prefWidth="666.0">
+         <children>
+            <Label layoutX="53.0" layoutY="92.0" text="ID_ARTICLE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="87.0" layoutY="142.0" text="Nom">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="67.0" layoutY="196.0" text="Quantite">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="62.0" layoutY="247.0" text="Categorie">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="94.0" layoutY="295.0" text="Prix">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="ok_btn" layoutX="501.0" layoutY="430.0" mnemonicParsing="false" onMouseClicked="#Edit" prefHeight="51.0" prefWidth="121.0" style="-fx-background-color: green;" text="Ok" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Label alignment="CENTER" layoutX="32.0" layoutY="14.0" prefHeight="51.0" prefWidth="606.0" text="Article details" textAlignment="CENTER">
+               <font>
+                  <Font name="Bauhaus 93" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="344.0" text="ID_COMMERCE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="305.0" layoutY="430.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="51.0" prefWidth="121.0" style="-fx-background-color: orange;" text="Cancel">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <TextField fx:id="txt_id" layoutX="259.0" layoutY="92.0" prefHeight="35.0" prefWidth="149.0" promptText="ID_ARTICLE" />
+            <TextField fx:id="txt_nom" layoutX="259.0" layoutY="142.0" prefHeight="35.0" prefWidth="149.0" promptText="NOM" />
+            <TextField fx:id="txt_quantite" layoutX="259.0" layoutY="196.0" prefHeight="35.0" prefWidth="149.0" promptText="QUANTITE" />
+            <TextField fx:id="txt_categorie" layoutX="259.0" layoutY="247.0" prefHeight="35.0" prefWidth="149.0" promptText="CATEGORIE" />
+            <TextField fx:id="txt_prix" layoutX="259.0" layoutY="295.0" prefHeight="35.0" prefWidth="149.0" promptText="PRIX" />
+            <TextField fx:id="txt_commerce" layoutX="259.0" layoutY="344.0" prefHeight="35.0" prefWidth="149.0" promptText="ID_COMMERCE" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

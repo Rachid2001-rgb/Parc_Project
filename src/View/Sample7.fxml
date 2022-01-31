@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="BASELINE_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="25.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="644.0" prefWidth="940.0">
+         <children>
+            <TableView layoutX="10.0" layoutY="77.0" prefHeight="422.0" prefWidth="707.0" AnchorPane.leftAnchor="10.0">
+               <columns>
+                  <TableColumn prefWidth="96.66666412353516" text="id" />
+                  <TableColumn prefWidth="173.33333587646484" text="Nom" />
+                  <TableColumn prefWidth="87.33334350585938" text="Date naissance" />
+                  <TableColumn prefWidth="144.00003051757812" text="N Matricule" />
+                  <TableColumn prefWidth="102.99996948242188" text="Role" />
+                  <TableColumn prefWidth="101.66668701171875" text="coché" />
+               </columns>
+            </TableView>
+            <Label layoutX="342.0" layoutY="18.0" prefHeight="36.0" prefWidth="107.0" text="Rechercher :">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField layoutX="474.0" layoutY="19.0" prefHeight="38.0" prefWidth="182.0" />
+            <Button layoutX="552.0" layoutY="544.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="150.0" style="-fx-background-color: WHITE; -fx-border-color: black;" text="Quitter">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="195.0" layoutY="543.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="150.0" style="-fx-background-color: GOLD; -fx-border-color: black;" text="Modifier">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="367.0" layoutY="544.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="150.0" style="-fx-background-color: GOLD; -fx-border-color: black;" text="Supprimer">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="22.0" layoutY="543.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="150.0" style="-fx-background-color: GOLD; -fx-border-color: black;" text="Ajouter">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>

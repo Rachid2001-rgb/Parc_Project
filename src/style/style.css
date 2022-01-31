@@ -1,0 +1,50 @@
+
+
+.login-bt{
+	-fx-background-color:linear-gradient(to top,#ffffff,#FFCC66);
+	
+}
+
+
+.btn-login{
+     -fx-background-color:#FFCC66;
+     -fx-text-fill:#fff;
+     -fx-font-size:15px;
+     -fx-font-weight:700;
+     -fx-background-radius:8px;
+     
+}
+
+.lbl-status{
+	-fx-background-color:#FFCC66;
+	-fx-text-fill:#fff;
+	-fx-alignment:CENTER;
+	-fx-font-size:16px;
+	-fx-background-radius:8px;
+	
+}
+
+.lbl-user{
+	
+	-fx-text-fill:black;
+	-fx-alignment:CENTER;
+	-fx-font-size:16px;
+	-fx-font-weight:600;
+	
+}
+
+
+.tab-pane{
+	-fx-tab-max-height:0px;
+}
+
+.tab-pane .tab-header-area{
+	visibility: hidden;
+}
+
+.acount-bg{
+	-fx-background-color:linear-gradient(to top,#0082bc,#01d8db);
+}
+
+
+
