@@ -38,6 +38,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import models.Attraction;
+import models.Repas;
 
 
 
@@ -46,10 +47,15 @@ public class SampleController implements Initializable{
 	    PreparedStatement st=null;
 	    ResultSet result=null;
 	   Attraction attraction=null;
+	   Repas repas=null;
 	   String query = null;
 		AttractionViewController attractionViewController=new AttractionViewController();
+		RepasViewController repasViewController=new RepasViewController();
 
-	    public ObservableList<Attraction> AttractionList =FXCollections.observableArrayList();   
+
+	    public ObservableList<Attraction> AttractionList =FXCollections.observableArrayList();
+	    public ObservableList<Repas> RepasList =FXCollections.observableArrayList();   
+
 
 	@FXML
 	private BorderPane bp;
@@ -59,38 +65,46 @@ public class SampleController implements Initializable{
 	private Button button_logout;
 	@FXML
 	private Button btn_add;
+	private Button btn_addR;
 	@FXML
     private AnchorPane add_1;
 	  @FXML
-	    private TextField txt_search;
+	private TextField txt_search;
 	 @FXML
-	    private TableView<Attraction> attractionTable;
+	private TableView<Attraction> attractionTable;
+	private TableView<Repas> repasTable;
 	@FXML
     private TableColumn<Attraction,String> duree_col;
+    private TableColumn<Repas,String> qteR_col;
 
     @FXML
     private TableColumn<Attraction, String> edit_col;
 
     @FXML
     private TableColumn<Attraction, String> id_col;
+    private TableColumn<Repas, String> idR_col;
 
     @FXML
     private TableColumn<Attraction, String> nom_col;
+    private TableColumn<Repas, String> nomR_col;
+
 
     @FXML
     private TableColumn<Attraction, String> prix_col;
+    private TableColumn<Repas, String> prixR_col;
 
     @FXML
     private Button btn_delete;
+    private Button btn_deleteR;
+
 
     @FXML
     private Button btn_edit;
-    
+    private Button btn_editR;
+
         
-    
     @FXML
     void close(MouseEvent event) {
-    	
     	Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
@@ -114,7 +128,28 @@ public class SampleController implements Initializable{
 	
 	}
 	
-    public ObservableList<Attraction> ProductSearchModelObservableList =FXCollections.observableArrayList();   
+	@FXML
+	void openAddR(ActionEvent event) {
+		Parent root = null;
+		Stage stage =  (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+	try {
+
+		root =  FXMLLoader.load(getClass().getResource("/View/RepasView.fxml"));
+		
+		stage.setScene(new Scene(root));
+		stage.show();
+		
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+	
+	
+	}
+	
+    public ObservableList<Attraction> ProductSearchModelObservableList =FXCollections.observableArrayList(); 
+    /*public ObservableList<Repas> ProductSearchModelObservableList =FXCollections.observableArrayList();*/   
+
 
 	public void initialize(URL url, ResourceBundle rb) {
 		button_logout.setOnAction(new EventHandler<ActionEvent>(){
@@ -158,6 +193,49 @@ public class SampleController implements Initializable{
 		 
 	}
 	
+	
+	public void initializeR(URL url, ResourceBundle rb) {
+		button_logout.setOnAction(new EventHandler<ActionEvent>(){
+	    		@Override 
+	    		public void handle(ActionEvent event) {
+	    			DBParc.changeScene(event,"/View/LoginView.fxml", "Connecter!",null);
+	    			
+	    		}
+	    	});
+	
+		loadDate();
+
+        repasTable.setItems(RepasList);
+		FilteredList<Repas> filterdData=new FilteredList<>(RepasList,b->true);
+		 txt_search.textProperty().addListener((observable,oldValue,newValue) -> {
+			 filterdData.setPredicate( repas -> {
+			 if (newValue.isEmpty()|| newValue.isBlank()|| newValue==null) {
+				 return true;
+			 }
+			String searchKeyWord= newValue.toLowerCase();
+			if (String.valueOf(repas.getIdR()).toLowerCase().indexOf(searchKeyWord)>-1) {
+				return true;
+			}
+			else if(String.valueOf(repas.getTxt_nomR()).toLowerCase().indexOf(searchKeyWord)>-1) {
+				return true;}
+			else if(String.valueOf(repas.getTxt_prixR()).toLowerCase().indexOf(searchKeyWord)>-1) {
+				return true;}
+			else if(String.valueOf(repas.getTxt_qteR()).toLowerCase().indexOf(searchKeyWord)>-1) {
+				return true;
+			}else 
+				return false;
+		        
+			
+			 });
+			 
+
+		 });
+		SortedList<Repas> sortedData=new SortedList<>(filterdData);
+		sortedData.comparatorProperty().bind(repasTable.comparatorProperty());
+		repasTable.setItems(sortedData);
+		 
+	}
+	
 	   @FXML
 	    void edit(ActionEvent event) {
 		   
@@ -182,6 +260,31 @@ public class SampleController implements Initializable{
            stage.show();
 
 	    }
+	   
+	   @FXML
+	    void editR(ActionEvent event) {
+		   
+		   repas = repasTable.getSelectionModel().getSelectedItem();
+
+			 FXMLLoader loader = new FXMLLoader ();
+          loader.setLocation(getClass().getResource("/View/RepasView.fxml"));
+          try {
+              loader.load();
+          } catch (IOException ex) {
+              Logger.getLogger(SampleController.class.getName()).log(Level.SEVERE, null, ex);
+          }
+  		RepasViewController repasViewController=loader.getController();
+  		repasViewController.setUpdate(true);
+  		repasViewController.setTextField(repas.getIdR(), repas.getTxt_nomR(), 
+                 repas.getTxt_prixR(),repas.getTxt_qteR());
+  		Parent parent = loader.getRoot();
+          Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+          stage.setScene(new Scene(parent));
+
+
+          stage.show();
+
+	    }
 	
 	   @FXML
 	    void delete(ActionEvent event) {
@@ -198,23 +301,26 @@ public class SampleController implements Initializable{
 		   
 	   }
 	   }
+	   
+	   @FXML
+	    void deleteR(ActionEvent event) {
+		   try {
+              repas = repasTable.getSelectionModel().getSelectedItem();
+              query = "DELETE FROM `repas` WHERE id  ="+repas.getIdR();
+      		cnx=ConnexionMysql.connexionDB();
+              st = cnx.prepareStatement(query);
+              st.execute();
+              refresh();
+              
+          } catch (SQLException ex) {
+              Logger.getLogger(SampleController.class.getName()).log(Level.SEVERE, null, ex);
+		   
+	   }
+	   }
+	   
 	   @FXML
 		private void Sample(MouseEvent event) {
 			bp.setCenter(ap);
-			String query = "DELETE FROM `facture` ";
-			cnx=ConnexionMysql.connexionDB();
-	     try {
-			st = cnx.prepareStatement(query);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	     try {
-			st.execute();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		}
 	@FXML
 	private void Sample4(MouseEvent event) {
@@ -264,6 +370,30 @@ public class SampleController implements Initializable{
 		 
 
 	    }
+	 
+	 @FXML
+	  private  void refreshR() {
+		 
+		 try {
+			 RepasList.clear();
+			  query="select * from repas";
+			 st=cnx.prepareStatement(query);
+			 result=st.executeQuery();
+			 while(result.next()) {
+				 RepasList.add(new Repas (result.getInt("idR"),result.getString("txt_nomR"),result.getInt("txt_qteR"),result.getFloat("txt_prixR")));
+				 repasTable.setItems(RepasList);
+				}
+			
+			 }
+			 
+			 
+		 catch (SQLException e) {
+	            Logger.getLogger(SampleController.class.getName()).log(Level.SEVERE, null, e);
+		}
+		
+		 
+
+	    }
 	
 	
 	private void loadPage(String page) {
@@ -286,6 +416,16 @@ public class SampleController implements Initializable{
 		nom_col.setCellValueFactory(new PropertyValueFactory<>("txt_nom"));
 		prix_col.setCellValueFactory(new PropertyValueFactory<>("txt_prix"));
 		duree_col.setCellValueFactory(new PropertyValueFactory<>("txt_duree"));
+				
+	}
+	
+	private void loadDateR(){
+		cnx=ConnexionMysql.connexionDB();
+		refresh();
+		idR_col.setCellValueFactory(new PropertyValueFactory<>("idR"));
+		nomR_col.setCellValueFactory(new PropertyValueFactory<>("txt_nomR"));
+		prixR_col.setCellValueFactory(new PropertyValueFactory<>("txt_prixR"));
+		qteR_col.setCellValueFactory(new PropertyValueFactory<>("txt_qteR"));
 				
 	}
 	

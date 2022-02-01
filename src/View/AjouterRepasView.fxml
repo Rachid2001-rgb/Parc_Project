@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="add_2" prefHeight="644.0" prefWidth="940.0" styleClass="login-bt" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RepasViewController">
+   <children>
+      <Label layoutX="110.0" layoutY="135.0" prefHeight="43.0" prefWidth="263.0" text="Nom Repas">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+         </font></Label>
+      <TextField fx:id="txt_nomR" layoutX="534.0" layoutY="135.0" prefHeight="43.0" prefWidth="276.0" />
+      <Label layoutX="110.0" layoutY="300.0" prefHeight="43.0" prefWidth="263.0" text="Quantité">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="110.0" layoutY="220.0" prefHeight="43.0" prefWidth="263.0" text="Prix">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_qteR" layoutX="534.0" layoutY="300.0" prefHeight="43.0" prefWidth="276.0" />
+      <TextField fx:id="txt_prixR" layoutX="534.0" layoutY="220.0" prefHeight="43.0" prefWidth="276.0" />
+      <Button fx:id="btn_ajouterR" layoutX="568.0" layoutY="512.0" mnemonicParsing="false" onMouseClicked="#addAttraction" prefHeight="75.0" prefWidth="170.0" style="-fx-background-color: GOLD; -fx-background-radius: 25;" text="Valider">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_sortirR" layoutX="273.0" layoutY="512.0" mnemonicParsing="false" onAction="#ev_sortirR" prefHeight="75.0" prefWidth="170.0" style="-fx-background-color: WHITE; -fx-background-radius: 25;" text="Sortir">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="20.0" />
+         </font>
+      </Button>
+     
+   </children>
+</AnchorPane>
